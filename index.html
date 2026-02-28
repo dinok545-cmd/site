@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English with Dina | Репетитор английского языка</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B6B;       /* Яркий коралловый */
+            --secondary: #4ECDC4;     /* Мятный */
+            --accent: #FFE66D;        /* Солнечный желтый */
+            --dark: #292F36;          /* Темно-серый для текста */
+            --light: #F7FFF7;         /* Почти белый фон */
+            --gradient: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Header & Nav --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--gradient);
+            color: white;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative circles */
+        .circle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        .c1 { width: 300px; height: 300px; top: -50px; left: -100px; animation-delay: 0s; }
+        .c2 { width: 500px; height: 500px; bottom: -100px; right: -100px; animation-delay: -3s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: var(--dark);
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* --- Sections General --- */
+        section {
+            padding: 5rem 10%;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 4px;
+            background: var(--secondary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- About Me --- */
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            transform: rotate(-3deg);
+            transition: transform 0.3s;
+        }
+        
+        .about-img img:hover {
+            transform: rotate(0deg);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* --- Methods / Cards --- */
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: transform 0.3s;
+            border-bottom: 5px solid var(--secondary);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        /* --- Pricing --- */
+        .pricing {
+            background: #f0f4f8;
+        }
+
+        .price-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-tag {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .price-features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .price-features li::before {
+            content: '✓';
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* --- Contact --- */
+        .contact {
+            text-align: center;
+            background: var(--dark);
+            color: white;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+        
+        .contact h2::after {
+            background: var(--accent);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            background: white;
+            color: var(--dark);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: var(--accent);
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; }
+            .about-container { flex-direction: column; }
+            section { padding: 3rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">🇬🇧 English with Dina</a>
+        <nav>
+            <ul>
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#methods">Методика</a></li>
+                <li><a href="#pricing">Цены</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+        <div class="hero-content">
+            <h1>English is Fun! ✨</h1>
+            <p>Учи английский без скучных учебников. Говори свободно уже через 3 месяца с Диной!</p>
+            <a href="#contact" class="btn">Записаться на пробный урок 🚀</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>Кто я? 👋</h2>
+        <div class="about-container">
+            <div class="about-img">
+                <!-- Placeholder image for tutor -->
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Репетитор Дина">
+            </div>
+            <div class="about-text">
+                <h3>Привет! Меня зовут Дина 💫</h3>
+                <br>
+                <p>Я сертифицированный преподаватель (CELTA) с опытом более 5 лет. Моя миссия — доказать, что английский может быть лёгким, ярким и по-настоящему интересным!</p>
+                <p>Я не заставляю зубрить слова списками. Мы смотрим сериалы, обсуждаем мемы, слушаем музыку и говорим о том, что интересно именно вам.</p>
+                <p><strong>Мои принципы:</strong><br>
+                ✅ 80% времени урока — это ваша речь.<br>
+                ✅ Никаких скучных грамматических таблиц.<br>
+                ✅ Поддержка в чате 24/7.<br>
+                ✅ Индивидуальный подход к каждому ученику.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="methods">
+        <h2>Как проходят уроки? 🎯</h2>
+        <div class="methods-grid">
+            <div class="card">
+                <span class="card-icon">🎬</span>
+                <h3>Погружение в среду</h3>
+                <p>Используем оригинальные материалы: статьи TED, видео YouTube и отрывки из Netflix для живого языка.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🗣️</span>
+                <h3>Разговорная практика</h3>
+                <p>Преодолеваем языковой барьер с первого занятия. Ошибаться — это нормально и даже полезно!</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🎮</span>
+                <h3>Геймификация</h3>
+                <p>Интерактивные квизы, ролевые игры и современные приложения для запоминания слов без скуки.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <h2>Стоимость 💰</h2>
+        <div class="price-card">
+            <h3>Индивидуальный урок</h3>
+            <div class="price-tag">1 500 ₽</div>
+            <p>за 60 минут</p>
+            <br>
+            <ul class="price-features">
+                <li>Персональная программа под ваши цели</li>
+                <li>Подробный разбор домашних заданий</li>
+                <li>Доступ к закрытой платформе с материалами</li>
+                <li>Гибкий график и перенос занятий</li>
+                <li>Поддержка в мессенджерах между уроками</li>
+            </ul>
+            <a href="#contact" class="btn">Выбрать тариф ✨</a>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Начни говорить уже сегодня! 🌟</h2>
+        <p>Напиши мне в любой мессенджер, чтобы выбрать удобное время для первого урока.</p>
+        
+        <div class="contact-links">
+            <a href="#" class="contact-btn">💬 Telegram</a>
+            <a href="#" class="contact-btn">📱 WhatsApp</a>
+            <a href="#" class="contact-btn">📸 Instagram</a>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 20px; background: #222; color: #777; font-size: 0.9rem;">
+        &copy; 2026 English with Dina. Все права защищены. Made with 💜 for English lovers.
+    </footer>
+
+</body>
+</html>
